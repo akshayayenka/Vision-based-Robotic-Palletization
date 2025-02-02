@@ -1,0 +1,55 @@
+<mujoco model="xarm7 scene">
+  <include file="xarm7.xml"/>
+
+  <statistic center="0.2 0 0.4" extent=".65"/>
+
+  <visual>
+    <headlight diffuse="0.6 0.6 0.6" ambient="0.3 0.3 0.3" specular="0 0 0"/>
+    <rgba haze="0.15 0.25 0.35 1"/>
+    <global azimuth="150" elevation="-20"/>
+  </visual>
+
+  <asset>
+    <texture type="skybox" builtin="gradient" rgb1="0.3 0.5 0.7" rgb2="0 0 0" width="512" height="3072"/>
+    <texture type="2d" name="groundplane" builtin="checker" mark="edge" rgb1="0.2 0.3 0.4" rgb2="0.1 0.2 0.3"
+      markrgb="0.8 0.8 0.8" width="300" height="300"/>
+    <material name="groundplane" texture="groundplane" texuniform="true" texrepeat="5 5" reflectance="0.2"/>
+  </asset>
+
+  <worldbody>
+    <light pos="0 0 1.5" dir="0 0 -1" directional="true"/>
+    <geom name="floor" size="0 0 0.05" type="plane" material="groundplane"/>
+    <geom type="cylinder" size=".06 .06" pos="0 0 .06" rgba="1 1 1 1"/>
+    <!--x: Half of the box's width (along the x-axis).
+    y: Half of the box's depth (along the y-axis).
+    z: Half of the box's height (along the z-axis).
+    -->
+    <!-- Wall on the front side -->
+<!-- <geom name="front_wall" type="box" size="1 0.1 1" pos="0 1.6 0" /> -->
+
+<!-- Wall on the back side -->
+<!-- <geom name="back_wall" type="box" size="1 0.1 1" pos="0 -1.6 0" /> -->
+
+<!-- Wall on the left side -->
+<!-- <geom name="left_wall" type="box" size="0.1 1 1" pos="-1.6 0 0" /> -->
+
+<!-- Wall on the right side -->
+<geom name="right_wall" type="box" size="0.1 1 1" pos="1.8 0 0" />
+
+<!-- Small Table -->
+<geom name="table" type="box" size="0.5 0.3 0.2" pos="1.4 0.3 0.2" rgba="0.6 0.4 0.2 1" />
+
+<!-- Box 1 near the table -->
+<geom name="box1" type="box" size="0.1 0.1 0.1" pos="1.2 -0.3 0.2" rgba="0.8 0.1 0.1 1" />
+
+<!-- Box 2 near the table -->
+<geom name="box2" type="box" size="0.1 0.1 0.1" pos="1.6 0.3 0.5" rgba="0.1 0.8 0.1 1" />
+
+<!-- Box 3 on the table -->
+<geom name="box3" type="box" size="0.1 0.1 0.1" pos="1.4 0.5 0.5" rgba="0.1 0.1 0.8 1" />
+
+
+
+    <!-- <geom name="box1" type="box" pos="0.5 0 0" euler= "3.14159 0 1.5" size="0.04 0.04 0.04" rgba="0 1 0 1"/> -->
+  </worldbody>
+</mujoco>
